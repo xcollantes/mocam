@@ -39,7 +39,7 @@ def main(sys_argv):
 
     while True:
         current_state: Set = _get_file_state(motion_source_path)
-        logging.debug("CURRNET: %s", current_state)
+        logging.debug("CURRENT FILES: %s", current_state)
 
         if prev_state != current_state:
             logging.info("File change detected")

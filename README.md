@@ -51,7 +51,7 @@ Prerequisties
 TODO: Premade docker image 
 
 1. Run Docker image: `docker run -d mocam`
-1. See machine logs at ``
+1. See machine logs at `/motion/log/motion.log` if enabled in the `motion.conf`.  
 
 ### How it works 
 

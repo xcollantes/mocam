@@ -1,14 +1,10 @@
 # MoCam64
 
-![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)
-
-Easy setup for motion detection camera on next generation 64-bit machines.  
+Easy setup for motion detection camera compatible with next generation 64-bit machines.  
 
 Intended and tested for RaspberryPi 4+. MoCam64 is an implementation of [motion-project.github.io](https://motion-project.github.io) for capturing video and images when motion is detected and [Rclone](https://rclone.org) to quickly upload captures to a cloud provider of your choice. 
 
 ## Getting started 
-
-
 
 ### 1. Setup saving video and images to a cloud provider 
 
@@ -30,8 +26,6 @@ Some providers include:
 Create `rclone.conf`
 1. Install Rclone locally 
 1. Run `rclone config` 
-
-
 
 
 ### 2. (Optional) Build Docker image 
@@ -71,3 +65,14 @@ MoCam64 depends on Motion to capture video and images when motion is detected an
 **How do I get my device name?**
 
 Run `v4l2-ctl --list-devices` to see the devices attached to your machine. 
+
+
+**Processor compatibility: arm64**
+
+Since this was tested on RPI4 which is uses arm64 processor, by default the Docker base image is `python:bullseye` which works with arm64 processor.  
+
+Previously, [`raspberrypi4-64-debian`](https://hub.docker.com/r/balenalib/raspberrypi4-64-debian) was used as the base image which worked with no issue.  
+
+Choose a base image which matches the processor of the machine.  
+
+![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)

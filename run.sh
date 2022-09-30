@@ -10,7 +10,7 @@ RCLONE_DEST=$1
 
 # & to run each script in the background as opposed 
 # to running sequentially.  
-/mocam/start_sync.sh /motion/ $RCLONE_DEST &
+python3 /mocam/start_sync.py --rclone_dest $RCLONE_DEST &
 /mocam/start_motion.sh &
 
 wait -n

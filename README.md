@@ -8,9 +8,7 @@ Intended and tested for RaspberryPi 4+. MoCam64 is an implementation of [motion-
 
 ### 1. Setup saving video and images to a cloud provider 
 
-If you want to upload video and images captured, create an Rclone config which MoCam64 will be able to log into your cloud provider of choice.  
-
-See list of 60+ cloud storage providers: https://rclone.org/#providers 
+If you want to upload video and images captured, create an Rclone config which MoCam64 will be able to log into your cloud provider of choice.  See list of 60+ cloud storage providers: https://rclone.org/#providers 
 
 Some providers include: 
 
@@ -22,21 +20,28 @@ Some providers include:
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
 
-
 Create `rclone.conf`
-1. Install Rclone locally 
+1. Install Rclone locally: `sudo -v ; curl https://rclone.org/install.sh | sudo bash` 
 1. Run `rclone config` 
 
+   Follow the prompt to generate an `rclone.conf` file which should be copied to `mocam/` repo directory. 
+
+(https://rclone.org/install) 
 
 ### 2. (Optional) Build Docker image 
 
-Skip to 3 for premade Docker image found at ``
+TODO: Add premade Docker image. 
+Skip to 3 for premade Docker image found at `` 
+
+```shell
+docker build -t mocam . 
+```
 
 ### 3. Run Docker image 
 
 Prerequisties 
 - [ ] Connected camera to machine 
-- [ ] Decided where to store videos and images (you have setup Rclone if you want to use cloud provider) 
+- [ ] Decided where to store videos and images (you have setup Rclone and make an `rclone.conf` file if you want to use cloud provider) 
 - [ ] Either built a Docker image or about to use `` 
 
 1. Get your camera device name by running `v4l2-ctl --list-devices` on your machine. 
@@ -44,28 +49,28 @@ Prerequisties
 
    See [motion-project.github.io](https://motion-project.github.io/motion_config.html#configfiles) for full options. 
 
-1. Build Docker image: `docker build -t mocam --build-arg=rclone_dest=[rclone_format] .`
-   - `rclone_format` is the destination in Rclone format if using cloud provider 
-   - Example: `docker build -t mocam --build-arg=rclone_dest=remote-mega:/mo_cam_dir mocam`
+1. Build Docker image: `docker build -t mocam .`
+1. Run command: 
 
-TODO: Premade docker image 
+```shell
+docker run --rm --device=/dev/video0:/dev/video0 --env RCLONE_DEST=remote-mega:/mo_cam mocam
+```
+- `--device` Docker flag to let container use the host machine's camera. 
+- `--env` Set ENV variables.  
+- `RCLONE_DEST` Rclone destination location with format as `PROFILE:/directory_in_cloud`. 
+- `--rm` Remove the container if stopped. 
 
-1. Run Docker image: `docker run -d mocam`
 1. See machine logs at `/motion/log/motion.log` if enabled in the `motion.conf`.  
 
 ### How it works 
 
 MoCam64 depends on Motion to capture video and images when motion is detected and Rclone to quickly upload captures to a cloud provider. 
 
-
-
-
 ## Common pitfalls 
 
 **How do I get my device name?**
 
 Run `v4l2-ctl --list-devices` to see the devices attached to your machine. 
-
 
 **Processor compatibility: arm64**
 

@@ -3,14 +3,13 @@
 # Shell script to start sync of Mo Cam image and video outputs. 
 # Author: collantes.xavier@gmail.com 
 
-
-# Location on remote cloud provider to save 
-# videos and images. 
-RCLONE_DEST=$1
-
 # & to run each script in the background as opposed 
 # to running sequentially.  
-python3 /mocam/start_sync.py --rclone_dest $RCLONE_DEST &
+echo "SAVE_SOURCE: $SAVE_SOURCE" 
+echo "RCLONE_DEST: $RCLONE_DEST"
+echo "RCLONE_CONFIG: $RCLONE_CONFIG"
+
+#python3 /mocam/start_sync.py --rclone_dest $RCLONE_DEST &
 /mocam/start_motion.sh &
 
 wait -n

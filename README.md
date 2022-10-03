@@ -54,10 +54,14 @@ Make sure you have the following:
 docker run --rm --device=MY_DEVICE_NAME --env RCLONE_DEST=MY_RCLONE_PROFILE:/MY_DIR MY_IMAGE_NAME
 ```
 
-- `--device` Docker flag to let container use the host machine's camera. 
-- `--env` Set ENV variables.  
-- `RCLONE_DEST` Rclone destination location with format as `PROFILE:/directory_in_cloud`. 
 - `--rm` Remove the container if stopped. 
+- `--device` Docker flag to let container use the host machine's camera. 
+- `MY_DEVICE_NAME`
+- `--env` Set ENV variables.  
+- `RCLONE_DEST` Rclone destination location with format as `MY_RCLONE_PROFILE:/MY_DIR`. 
+- `MY_RCLONE_PROFILE` Rclone profile name as founc in the `rclone.conf` file created. 
+- `MY_DIR` Folder in the cloud provider you setup.  This can be a path with nested folders.   
+- `MY_IMAGE_NAME` Docker image name set in Docker build step.  
 
 Example: 
 

@@ -33,7 +33,7 @@ Some providers include:
 
 ### 3. Build Docker image 
 
-1. Review `motion.conf`.  
+1. Review `motion.conf`.  The default settings are calibrated for a USB camera on a RPI4.  
 
    See [motion-project.github.io](https://motion-project.github.io/motion_config.html#configfiles) for full options. 
 
@@ -51,13 +51,19 @@ Make sure you have the following:
 1. Run command: 
 
 ```shell
-docker run --rm --device=/dev/video0:/dev/video0 --env RCLONE_DEST=remote-mega:/mo_cam mocam
+docker run --rm --device=MY_DEVICE_NAME --env RCLONE_DEST=MY_RCLONE_PROFILE:/MY_DIR MY_IMAGE_NAME
 ```
 
 - `--device` Docker flag to let container use the host machine's camera. 
 - `--env` Set ENV variables.  
 - `RCLONE_DEST` Rclone destination location with format as `PROFILE:/directory_in_cloud`. 
 - `--rm` Remove the container if stopped. 
+
+Example: 
+
+```shell
+docker run --rm --device=/dev/video0 --env RCLONE_DEST=remote-mega:/mo_cam mocam
+```
 
 1. See machine logs at `/motion/log/motion.log` if enabled in the `motion.conf`.  You will also see the logs from the container by using `docker logs CONTAINER_HASH`  
 

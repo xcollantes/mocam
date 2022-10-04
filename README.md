@@ -97,3 +97,10 @@ Depending on the camera's environment, the camera, the procesing power of the ma
 
 Below are the calibration notes I took for my setup: 
 
+My goals in order of priority: 
+1. capture accuracy (does the camera capture the subject fully?) 
+2. image quality (is the subject's face visible?) 
+3. network conservation (can the videos upload to the cloud in under 2 seconds?) 
+
+- `framrate` setting is MAX and seems to fluctuate 
+- I'm using `event_gap` of 1 for testing so upload occurs right away 

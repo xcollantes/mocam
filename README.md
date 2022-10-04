@@ -90,3 +90,10 @@ Previously, [`raspberrypi4-64-debian`](https://hub.docker.com/r/balenalib/raspbe
 Choose a base image which matches the processor of the machine.  
 
 ![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)
+
+## motion.conf calibration 
+
+Depending on the camera's environment, the camera, the procesing power of the machine, and the network the camera is on, the Motion config might need to be adjusted.  The settings and their values are most explained at https://motion-project.github.io/motion_config.html.  
+
+Below are the calibration notes I took for my setup: 
+

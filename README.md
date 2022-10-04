@@ -27,7 +27,8 @@ Some providers include:
 ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
 
 1. Install Rclone locally: `sudo -v ; curl https://rclone.org/install.sh | sudo bash` 
-1. Run `rclone config` and follow the prompt to generate an `rclone.conf` file which should be copied to `mocam/` repo directory like so: `mocam/rclone.conf`. 
+1. Run `rclone config` and follow the prompt to generate an `rclone.conf`
+1. Generated config can be found in `~/.config/rclone/rclone.conf`.  Copy or move file to `mocam/` repo directory like so: `mocam/rclone.conf`. 
 
 (https://rclone.org/install) 
 

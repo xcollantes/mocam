@@ -1,8 +1,8 @@
-# MoCam64
+# MoCam
 
 Easy setup for motion detection camera compatible with next generation 64-bit machines.  
 
-Intended and tested for RaspberryPi 4+. MoCam64 is an implementation of [motion-project.github.io](https://motion-project.github.io) for capturing video and images when motion is detected and [Rclone](https://rclone.org) to quickly upload captures to a cloud provider of your choice. 
+MoCam is an implementation of [motion-project.github.io](https://motion-project.github.io) for capturing video and images when motion is detected and [Rclone](https://rclone.org) to quickly upload captures to a cloud provider of your choice. 
 
 ## Getting started 
 
